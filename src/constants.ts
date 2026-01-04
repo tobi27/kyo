@@ -5,16 +5,16 @@ export const PRICING_TIERS: PricingTier[] = [
     id: "standard",
     name: "Standard",
     price: "$500",
-    period: "/month",
-    description: "For teams monetizing their first agent workflows.",
+    period: "/mo",
+    description: "Predictable unit economics for growing agent fleets.",
     features: [
       "10,000 billable tasks included",
       "$0.0001 per additional task",
-      "Standard retention (30 days)",
-      "Basic Runtime Spend Caps",
+      "Standard Settlement Windows",
+      "Recursive Spend Caps",
       "Email Support"
     ],
-    cta: "Start Integration",
+    cta: "Start 10-min deploy",
     mode: "subscription",
     priceId: import.meta.env.VITE_STRIPE_PRICE_STANDARD || "price_standard",
   },
@@ -23,12 +23,12 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Enterprise",
     price: "Custom",
     period: "",
-    description: "For platforms running mission-critical agent swarms.",
+    description: "For high-scale platforms requiring SLA & VPC isolation.",
     features: [
       "Volume discounts",
-      "Private Control Plane option",
-      "Unlimited log retention",
-      "Complex Swarm Budgeting",
+      "Private Control Plane (BYOC)",
+      "Signed Receipt Finality",
+      "Merkle Audit Windows",
       "Dedicated Solution Architect",
       "24/7 SLA"
     ],
@@ -41,11 +41,11 @@ export const PRICING_TIERS: PricingTier[] = [
     name: "Design Partner",
     price: "$25,000",
     period: "one-time",
-    description: "White-glove implementation for high-scale builders.",
+    description: "White-glove implementation for disruptive agent builders.",
     features: [
       "7-day deployment guarantee",
-      "White-glove BYOC setup",
-      "Custom integration engineering",
+      "Custom ForkLicense Logic",
+      "Integration Engineering",
       "Roadmap priority",
       "Direct channel to founders"
     ],
@@ -57,36 +57,28 @@ export const PRICING_TIERS: PricingTier[] = [
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
+    question: "What is a ForkLicense?",
+    answer: "A ForkLicense is a signed contract for agent reproduction. When a parent agent spawns a sub-agent, the ForkLicense enforces budget inheritance, recursion depth, and spawn taxes to prevent runaway scaling costs."
+  },
+  {
+    question: "How does 'Receipt Finality' work?",
+    answer: "Every completed task generates a cryptographically signed receipt. These receipts are batched into Merkle trees and rolled up at configurable windows, providing tamper-proof audit trails for compliance and chargebacks."
+  },
+  {
+    question: "Is my prompt data safe?",
+    answer: "Yes. XiGate operates on a zero-trust model. We only ingest usage metadata (token counts, model IDs, task duration) for accounting. Prompt payloads never leave your VPC."
+  },
+  {
+    question: "What are 'Lanes & Pricing'?",
+    answer: "Lanes are priority tiers for agent execution. Priority Lane offers faster settlement and higher rate limits for time-sensitive tasks. Economy Lane provides cost-optimized execution for batch workloads."
+  },
+  {
     question: "Can we bill our customers per workflow?",
     answer: "Yes. XiGate generates a unique transaction ID for every agent execution. You can map these 1:1 to your customer invoices with exact margin calculation."
   },
   {
-    question: "Does prompt data leave our VPC?",
-    answer: "No. XiGate operates on a zero-trust model. We only ingress usage metadata (token counts, model IDs, task duration) for accounting. Payloads remain in your infrastructure."
-  },
-  {
-    question: "How do you do chargeback?",
-    answer: "We tag every execution with a Cost Center or Project ID at runtime. At the end of the cycle, we generate a consolidated ledger export compatible with ERPs (NetSuite, Oracle, Coupa)."
-  },
-  {
-    question: "How do swarms stay safe?",
-    answer: "XiGate implements lineage tracking with recursive sub-budgets. A parent agent delegates a 'max spend' to a child. If the child hits the cap, it is halted immediately, protecting the parent's total budget."
-  },
-  {
-    question: "What specific stacks do you support?",
-    answer: "We offer drop-in SDKs for OpenAI, Anthropic, LangChain, LangGraph, and CrewAI. We also act as a proxy for standard HTTP requests if you're using custom orchestrators."
-  },
-  {
-    question: "Is this a proxy or an SDK?",
-    answer: "Both deployment modes are available. The sidecar proxy offers the strongest guarantees for non-compliant traffic blocking, while the SDK provides deeper application-level context."
-  },
-  {
-    question: "How is 'margin' calculated?",
-    answer: "You define a rate card for your end-users (e.g., $0.10 per task). We track the underlying provider cost (e.g., $0.02). The ledger automatically calculates and records the $0.08 gross margin per task."
-  },
-  {
-    question: "Can I deploy the control plane on-prem?",
-    answer: "Yes. For Enterprise tier customers, the entire control plane (UI and database) can be deployed within your air-gapped environment."
+    question: "What integrations do you support?",
+    answer: "We offer drop-in SDKs for OpenAI, Anthropic, LangChain, LangGraph, CrewAI, and MCP. We also act as a proxy for standard HTTP requests if you're using custom orchestrators."
   }
 ];
 
