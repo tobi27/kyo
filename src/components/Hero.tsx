@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Ledger from './Ledger';
 
@@ -46,9 +46,9 @@ const Hero: React.FC = () => {
             <button onClick={handleStart} className="h-12 px-8 rounded-full bg-white text-black text-sm font-semibold hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
               Deploy in your VPC <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="h-12 px-8 rounded-full border border-slate-700 text-slate-300 text-sm font-medium hover:bg-slate-800/50 transition-colors">
+            <Link to="/contact?source=talk_to_sales" className="h-12 px-8 rounded-full border border-slate-700 text-slate-300 text-sm font-medium hover:bg-slate-800/50 transition-colors flex items-center justify-center">
               Talk to Sales
-            </button>
+            </Link>
           </div>
 
           <div className="pt-8 border-t border-white/5 w-full">

@@ -9,6 +9,7 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import Dashboard from './pages/Dashboard';
 import Success from './pages/Success';
+import Contact from './pages/Contact';
 import ProtectedRoute from './components/ProtectedRoute';
 import { syncUser } from './lib/api';
 
@@ -46,6 +47,7 @@ const App: React.FC = () => {
       <main>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/success" element={<Success />} />
         </Routes>

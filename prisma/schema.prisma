@@ -33,3 +33,13 @@ model Subscription {
 
   @@index([userId])
 }
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  message   String
+  source    String   @default("contact") // contact, enterprise, talk_to_sales
+  createdAt DateTime @default(now())
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 import { Check, Loader2 } from 'lucide-react';
 import { PRICING_TIERS } from '../constants';
 import { createCheckoutSession } from '../lib/stripe';
@@ -7,11 +8,12 @@ import { createCheckoutSession } from '../lib/stripe';
 const Pricing: React.FC = () => {
   const { isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
   const [loadingTier, setLoadingTier] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSelectPlan = async (tier: typeof PRICING_TIERS[0]) => {
     if (tier.mode === 'contact') {
-      // Open contact/email for Enterprise
-      window.location.href = 'mailto:sales@xigate.com?subject=Enterprise%20Inquiry';
+      // Go to contact form for Enterprise
+      navigate('/contact?source=enterprise');
       return;
     }
 
