@@ -1,5 +1,16 @@
 import React from 'react';
-import { AlertTriangle, Eye, FileX, Fingerprint, GitBranch, DollarSign, Shield, BarChart3, FileCheck } from 'lucide-react';
+import { Fingerprint, Target, FileCode, GitFork, Shield, Wallet, Gauge, Lock } from 'lucide-react';
+
+const PRIMITIVES = [
+  { icon: Fingerprint, title: 'AgentID (durable)', desc: 'Persistent machine identity with rotation and lineage tracking (parent/child relationships).', color: 'text-blue-400' },
+  { icon: Target, title: 'TaskID (economic unit)', desc: 'Every action is attributed to a Task (customer/project/workflow) enabling precise chargeback and margin calculation.', color: 'text-emerald-400' },
+  { icon: FileCode, title: 'Execution Envelope', desc: 'Each action = (agent_id, task_id, policy_hash, lane, cost_vector, trace_id). Full context, always.', color: 'text-purple-400' },
+  { icon: GitFork, title: 'ForkLicense (swarm recursion)', desc: 'Spawn = signed contract: budget_share + depth + inheritance rules. No rogue children.', color: 'text-orange-400' },
+  { icon: Shield, title: 'Receipt Finality', desc: 'Signed receipts + Merkle windows = tamper-proof audit trail for compliance and chargebacks.', color: 'text-cyan-400' },
+  { icon: Wallet, title: 'Settlement / Clearing', desc: 'Rollup Task to invoice to settlement events. Export to Stripe, NetSuite, or your ledger via API.', color: 'text-pink-400' },
+  { icon: Gauge, title: 'Lanes and Pricing', desc: 'best_effort / realtime / priority markets with dynamic pricing based on urgency and capacity.', color: 'text-yellow-400' },
+  { icon: Lock, title: 'StateVault / Escrow', desc: 'State + access + escrow enables non-output economy: payment on state/commit, not just text.', color: 'text-red-400' },
+];
 
 const INTEGRATIONS = [
   { name: 'OpenAI', sub: 'o1 / GPT-4o' },
@@ -12,73 +23,82 @@ const INTEGRATIONS = [
   { name: 'Pinecone', sub: 'Vector Store' },
 ];
 
-const PROTOCOL_STEPS = [
-  { num: '1', title: 'Identity & Permissions', desc: 'Every agent is assigned a durable AgentID (aid:) and CapTokens defining precise execution boundaries.', icon: Fingerprint },
-  { num: '2', title: 'Lineage & Genealogy', desc: 'Recursive spawns inherit budget constraints through ForkLicenses, creating an immutable family tree of cost.', icon: GitBranch },
-  { num: '3', title: 'Pricing & Optimization', desc: 'Dynamic Lanes (Priority/Economy) ensure the right price for the right task urgency at any scale.', icon: DollarSign },
-  { num: '4', title: 'Cryptographic Proofs', desc: 'Execution results generate signed receipts. Proof of completion is verified via Merkle window rollups.', icon: Shield },
-  { num: '5', title: 'Real-time P&L', desc: 'Live dashboards show customer-level unit economics and margin protection for every single task.', icon: BarChart3 },
-  { num: '6', title: 'Settlement Ready', desc: 'Automatic exports to Stripe, NetSuite, or internal ledgers. 100% audit-ready financial data.', icon: FileCheck },
-];
-
 const Features: React.FC = () => {
   return (
     <div id="features" className="bg-slate-950 relative overflow-hidden">
-      {/* The Burning Reality */}
-      <section className="py-32 px-6 border-b border-white/5">
+      
+      <section className="py-24 px-6 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">The Burning Reality</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg font-light">
-              AI agents are a "Black Box" of unmanaged expenses. In the machine economy, undefined burn rates are the primary blocker to enterprise-grade AI adoption.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: AlertTriangle, title: 'Uncontrollable Loops', desc: 'Recursive agents can drain months of budget in minutes without protocol-level circuit breakers.', color: 'text-red-500' },
-              { icon: Eye, title: 'Attribution Void', desc: 'Generic bills provide zero visibility into which customer, team, or task actually incurred the cost.', color: 'text-yellow-500' },
-              { icon: FileX, title: 'No Financial Trace', desc: 'Traditional logs lack cryptographic finality, making chargebacks and audits legally difficult.', color: 'text-orange-500' },
+              { title: 'Every agent action becomes a billable transaction', sub: 'customer / project / task attribution' },
+              { title: 'Swarm-native economics', sub: 'lineage + fork contracts + recursion-safe budgets' },
+              { title: 'Audit-grade proofs', sub: 'signed receipts + Merkle finality' },
+              { title: 'BYOC deployment', sub: 'execution stays in your VPC; settlement uses metadata only' },
             ].map((item, i) => (
-              <div key={i} className="p-8 rounded-2xl border border-red-500/10 bg-red-500/[0.02] hover:bg-red-500/[0.05] transition-colors">
-                <item.icon className={'w-8 h-8 mb-6 ' + item.color} />
-                <h3 className="text-lg font-medium text-white mb-3">{item.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+              <div key={i} className="p-6 rounded-xl border border-white/5 bg-white/[0.01]">
+                <p className="text-white font-medium mb-2">{item.title}</p>
+                <p className="text-slate-500 text-sm">{item.sub}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The Financial Protocol */}
       <section className="py-32 px-6 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">The Financial Protocol</h2>
+            <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">The Primitives</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg font-light">
-              The complete lifecycle of a billable agent action.<br />
-              <span className="text-slate-500">Identity → Lineage → Pricing → Receipts → Settlement.</span>
+              The building blocks that turn chaotic agent execution into auditable financial transactions.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROTOCOL_STEPS.map((step, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PRIMITIVES.map((prim, i) => (
               <div key={i} className="p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors group">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 font-bold text-sm">
-                    {step.num}
-                  </div>
-                  <step.icon className="w-5 h-5 text-slate-500 group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-lg font-medium text-white mb-2">{step.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{step.desc}</p>
+                <prim.icon className={'w-8 h-8 mb-4 ' + prim.color} />
+                <h3 className="text-white font-medium mb-2">{prim.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{prim.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The Ecosystem Core */}
+      <section className="py-32 px-6 border-b border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="flex items-center gap-2 text-orange-500 mb-4">
+                <GitFork className="w-5 h-5" />
+                <span className="text-xs font-bold uppercase tracking-widest">Swarm Economics</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-medium text-white mb-6">Recursive delegation<br />you can bill.</h2>
+              <p className="text-slate-400 mb-8 font-light leading-relaxed">
+                When agents spawn agents, costs explode. XiGate makes recursion profitable with built-in economic controls at every generation.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 shrink-0"></div><span className="text-slate-300">ForkLicense enforces budget inheritance per generation</span></li>
+                <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 shrink-0"></div><span className="text-slate-300">Lineage is mandatory in every receipt</span></li>
+                <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 shrink-0"></div><span className="text-slate-300">Spawn tax + lane premium scales revenue with recursion</span></li>
+              </ul>
+            </div>
+            <div className="bg-[#05080f] rounded-xl border border-white/5 p-8 font-mono text-xs">
+              <div className="text-slate-500 mb-4">// ForkLicense Contract</div>
+              <div className="space-y-2 text-slate-400">
+                <div><span className="text-blue-400">parent_agent_id</span>: aid:orchestrator_01</div>
+                <div><span className="text-emerald-400">child_agent_id</span>: aid:researcher_47</div>
+                <div><span className="text-purple-400">budget_share</span>: 0.15</div>
+                <div><span className="text-orange-400">max_depth</span>: 3</div>
+                <div><span className="text-cyan-400">spawn_tax</span>: 0.02</div>
+                <div><span className="text-pink-400">lane</span>: priority</div>
+                <div className="pt-4 border-t border-white/5 mt-4"><span className="text-yellow-400">signature</span>: 0x8f2a...c4e1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-center text-xs text-slate-600 uppercase tracking-widest font-semibold mb-12">The Ecosystem Core</h3>

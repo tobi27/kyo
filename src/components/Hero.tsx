@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
           </div>
 
           <p className="text-lg text-slate-400 max-w-lg font-light leading-relaxed">
-            The infrastructure layer for the machine economy. Turn every agent call into an auditable, billable financial transaction.
+            XiGate turns agent execution into financial transactions: <span className="text-slate-300">identity → lineage → pricing → receipts → settlement.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
