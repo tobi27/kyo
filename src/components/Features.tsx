@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, TrendingUp, GitFork, Shield, Server, Zap, Receipt, DollarSign, Lock, CheckCircle } from 'lucide-react';
+import { AlertTriangle, TrendingUp, GitFork, Shield, Server, Zap, Receipt, DollarSign, Lock, CheckCircle, Activity, Users, Layers, ArrowRight } from 'lucide-react';
 
 const PAIN_POINTS = [
   { icon: AlertTriangle, text: 'Unpredictable AI spend that blindsides finance every month' },
@@ -22,6 +22,13 @@ const INTEGRATIONS = [
   { name: 'LangGraph', sub: 'Orchestration' },
 ];
 
+const SWARM_CAPABILITIES = [
+  { title: 'Research Swarms', desc: 'Spawn 50+ parallel researchers to analyze markets, competitors, or patents in minutes instead of weeks.' },
+  { title: 'Code Generation', desc: 'Orchestrate agents that write, review, test, and deploy code autonomously across your entire codebase.' },
+  { title: 'Data Pipelines', desc: 'ETL workflows where agents extract, transform, validate, and load data with self-healing error recovery.' },
+  { title: 'Customer Support', desc: 'Triage, classify, research, and resolve tickets with escalation agents that know when to involve humans.' },
+];
+
 const Features: React.FC = () => {
   return (
     <div id="features" className="bg-slate-950 relative overflow-hidden">
@@ -41,6 +48,80 @@ const Features: React.FC = () => {
                 <p className="text-slate-400 text-sm leading-relaxed">{point.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Exponential Problem Visualization */}
+      <section className="py-32 px-6 border-b border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="flex items-center gap-2 text-red-500 mb-4">
+                <Activity className="w-5 h-5" />
+                <span className="text-xs font-bold uppercase tracking-widest">The Exponential Trap</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-medium text-white mb-6">
+                One agent spawns ten.<br />
+                Ten spawn a hundred.<br />
+                <span className="text-red-500">Your budget is gone.</span>
+              </h2>
+              <p className="text-slate-400 mb-6 font-light leading-relaxed">
+                Modern AI workflows aren't linear. An orchestrator spawns researchers. Researchers spawn validators. Validators spawn fixers. Each generation multiplies costs exponentially.
+              </p>
+              <p className="text-slate-400 mb-8 font-light leading-relaxed">
+                Without economic controls, a simple "analyze this document" request can cascade into thousands of LLM calls — each one billable, none of them tracked.
+              </p>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center p-4 rounded-lg bg-red-500/5 border border-red-500/10">
+                  <p className="text-2xl font-bold text-red-500">2^n</p>
+                  <p className="text-xs text-slate-500 mt-1">Cost growth per depth</p>
+                </div>
+                <div className="text-center p-4 rounded-lg bg-red-500/5 border border-red-500/10">
+                  <p className="text-2xl font-bold text-red-500">0%</p>
+                  <p className="text-xs text-slate-500 mt-1">Visibility without control</p>
+                </div>
+                <div className="text-center p-4 rounded-lg bg-red-500/5 border border-red-500/10">
+                  <p className="text-2xl font-bold text-red-500">???</p>
+                  <p className="text-xs text-slate-500 mt-1">Monthly bill surprise</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              {/* Visual: Exponential tree */}
+              <div className="bg-[#05080f] rounded-xl border border-white/5 p-8">
+                <div className="text-xs text-slate-500 mb-6 uppercase tracking-wider">Uncontrolled Swarm Growth</div>
+                <div className="flex flex-col items-center space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-600 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-slate-400" />
+                  </div>
+                  <div className="w-px h-4 bg-slate-700"></div>
+                  <div className="flex gap-4">
+                    {[1,2,3].map(i => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center">
+                        <span className="text-[10px] text-orange-400">{i}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    {[1,2,3,4,5,6,7,8,9].map(i => (
+                      <div key={i} className="w-6 h-6 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center">
+                        <span className="text-[8px] text-red-400">{i}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex gap-1 flex-wrap justify-center max-w-[280px]">
+                    {Array.from({length: 27}).map((_, i) => (
+                      <div key={i} className="w-4 h-4 rounded-full bg-red-600/30 border border-red-600/50"></div>
+                    ))}
+                  </div>
+                  <div className="text-red-500 text-xs font-mono mt-4">
+                    depth=4 → 81+ agents → $$$$ unknown
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-xl blur-xl -z-10"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -68,7 +149,46 @@ const Features: React.FC = () => {
         </div>
       </section>
 
-      {/* Swarm & Lineage */}
+      {/* What Swarms Can Do */}
+      <section className="py-32 px-6 border-b border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-2 text-purple-500 mb-4">
+              <Layers className="w-5 h-5" />
+              <span className="text-xs font-bold uppercase tracking-widest">Swarm Capabilities</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-medium text-white mb-6">
+              Autonomous agents are transforming enterprise.<br />
+              <span className="text-slate-500">But only if you can afford them.</span>
+            </h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              The most valuable AI workflows are recursive. They spawn sub-agents, parallelize work, and self-correct. XiGate makes these workflows economically viable.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {SWARM_CAPABILITIES.map((cap, i) => (
+              <div key={i} className="p-6 rounded-xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-colors group">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:bg-purple-500/20 transition-colors">
+                    <ArrowRight className="w-5 h-5 text-purple-500" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold mb-2">{cap.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{cap.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 p-6 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.02] text-center">
+            <p className="text-emerald-400 font-medium">
+              With XiGate: Every agent, every spawn, every token — tracked, attributed, and billable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Swarm & Lineage - How XiGate Controls It */}
       <section className="py-32 px-6 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -82,20 +202,36 @@ const Features: React.FC = () => {
                 <span className="text-slate-500">— with full economic lineage.</span>
               </h2>
               <p className="text-slate-400 mb-8 font-light leading-relaxed">
-                When agents spawn agents, costs explode. XiGate makes recursion profitable with built-in economic controls at every generation.
+                XiGate's ForkLicense system enforces economic rules at spawn time. Every child agent inherits budget constraints, depth limits, and attribution from its parent. No rogue children. No surprise bills.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                  <span className="text-slate-300">Agents spawn agents — budgets follow automatically</span>
+                  <div>
+                    <span className="text-white font-medium">Budget Inheritance</span>
+                    <p className="text-slate-500 text-sm">Children receive a fraction of parent budget. Total spend is bounded.</p>
+                  </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                  <span className="text-slate-300">Lineage ensures costs are bounded and attributable</span>
+                  <div>
+                    <span className="text-white font-medium">Depth Limits</span>
+                    <p className="text-slate-500 text-sm">Configure max recursion depth. Block spawns that exceed limits.</p>
+                  </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                  <span className="text-slate-300">Safe scaling without runaway costs</span>
+                  <div>
+                    <span className="text-white font-medium">Spawn Tax</span>
+                    <p className="text-slate-500 text-sm">Optional tax on each spawn. Discourages unnecessary recursion.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+                  <div>
+                    <span className="text-white font-medium">Full Lineage</span>
+                    <p className="text-slate-500 text-sm">Every agent knows its parent chain. Attribution flows to root task.</p>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -104,11 +240,16 @@ const Features: React.FC = () => {
               <div className="space-y-2 text-slate-400">
                 <div><span className="text-blue-400">parent_task</span>: TSK-3039</div>
                 <div><span className="text-emerald-400">child_task</span>: TSK-3040</div>
-                <div><span className="text-purple-400">budget_share</span>: 0.15 ($12.75)</div>
-                <div><span className="text-orange-400">max_depth</span>: 3</div>
-                <div><span className="text-cyan-400">customer</span>: Acme Corp</div>
-                <div><span className="text-pink-400">workflow</span>: Lead Enrichment</div>
-                <div className="pt-4 border-t border-white/5 mt-4"><span className="text-yellow-400">signature</span>: 0x8f2a...c4e1</div>
+                <div><span className="text-purple-400">budget_share</span>: 0.15 ($12.75 of $85.00)</div>
+                <div><span className="text-orange-400">max_depth</span>: 3 (current: 2)</div>
+                <div><span className="text-cyan-400">spawn_tax</span>: $0.05</div>
+                <div><span className="text-pink-400">customer</span>: Acme Corp</div>
+                <div><span className="text-slate-300">workflow</span>: Lead Enrichment</div>
+                <div className="pt-4 border-t border-white/5 mt-4">
+                  <span className="text-yellow-400">lineage</span>: root → orchestrator → researcher
+                </div>
+                <div><span className="text-emerald-400">status</span>: APPROVED</div>
+                <div><span className="text-slate-600">signature</span>: 0x8f2a...c4e1</div>
               </div>
             </div>
           </div>
