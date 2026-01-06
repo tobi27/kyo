@@ -31,9 +31,9 @@ const Footer: React.FC = () => {
             <button onClick={handleStart} className="h-12 px-8 rounded-full bg-white text-black text-sm font-semibold hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
               Deploy in your VPC <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="h-12 px-8 rounded-full border border-slate-700 text-slate-300 text-sm font-medium hover:bg-slate-800/50 transition-colors">
+            <Link to="/contact?source=talk_to_sales" className="h-12 px-8 rounded-full border border-slate-700 text-slate-300 text-sm font-medium hover:bg-slate-800/50 transition-colors flex items-center justify-center">
               Talk to Sales
-            </button>
+            </Link>
           </div>
           <button onClick={handleStart} className="mt-6 text-sm text-slate-500 hover:text-white transition-colors flex items-center justify-center gap-1 mx-auto">
             Start a 10-min deploy <ArrowRight className="w-3 h-3" />
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
               <a href="#" className="hover:text-white transition-colors">Documentation</a>
               <a href="#" className="hover:text-white transition-colors">API Reference</a>
               <a href="#" className="hover:text-white transition-colors">Status</a>
-              <a href="mailto:sales@xigate.com" className="hover:text-white transition-colors">Contact</a>
+              <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
             </div>
           </div>
 

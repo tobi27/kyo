@@ -3,19 +3,23 @@ import { CheckCircle2, Clock, XCircle } from 'lucide-react';
 
 interface Transaction {
   id: string;
-  agentId: string;
+  customer: string;
+  workflow: string;
   cost: number;
-  revenue: number;
+  billed: number;
   margin: string;
   status: 'Settled' | 'In-Flight' | 'Blocked';
 }
 
+const CUSTOMERS = ['Acme Corp', 'TechFlow', 'DataPrime', 'Nexus AI', 'Cortex Labs', 'FinServe', 'CloudOps'];
+const WORKFLOWS = ['Lead Enrichment', 'Doc Processing', 'Code Review', 'Data Pipeline', 'Support Triage', 'Risk Analysis', 'Report Gen'];
+
 const INITIAL_DATA: Transaction[] = [
-  { id: 'X-XI-3039', agentId: 'agent_96', cost: 0.007, revenue: 1.55, margin: '96.0%', status: 'In-Flight' },
-  { id: 'X-XI-6181', agentId: 'agent_19', cost: 0.011, revenue: 1.72, margin: '0.0%', status: 'Blocked' },
-  { id: 'X-XI-5036', agentId: 'agent_82', cost: 0.034, revenue: 1.29, margin: '99.0%', status: 'Settled' },
-  { id: 'X-XI-5758', agentId: 'agent_82', cost: 0.066, revenue: 0.32, margin: '0.0%', status: 'Blocked' },
-  { id: 'X-XI-9605', agentId: 'agent_88', cost: 0.118, revenue: 2.37, margin: '97.0%', status: 'Settled' },
+  { id: 'TSK-3039', customer: 'Acme Corp', workflow: 'Lead Enrichment', cost: 0.42, billed: 8.50, margin: '95.1%', status: 'In-Flight' },
+  { id: 'TSK-6181', customer: 'TechFlow', workflow: 'Doc Processing', cost: 1.23, billed: 0.00, margin: '0.0%', status: 'Blocked' },
+  { id: 'TSK-5036', customer: 'DataPrime', workflow: 'Code Review', cost: 0.89, billed: 15.00, margin: '94.1%', status: 'Settled' },
+  { id: 'TSK-5758', customer: 'Nexus AI', workflow: 'Data Pipeline', cost: 2.15, billed: 0.00, margin: '0.0%', status: 'Blocked' },
+  { id: 'TSK-9605', customer: 'Cortex Labs', workflow: 'Support Triage', cost: 0.67, billed: 12.00, margin: '94.4%', status: 'Settled' },
 ];
 
 const Ledger: React.FC = () => {
@@ -25,13 +29,18 @@ const Ledger: React.FC = () => {
     const interval = setInterval(() => {
       setRows(prev => {
         const randId = Math.floor(Math.random() * 9000 + 1000);
-        const randAgent = Math.floor(Math.random() * 99);
+        const randCustomer = CUSTOMERS[Math.floor(Math.random() * CUSTOMERS.length)];
+        const randWorkflow = WORKFLOWS[Math.floor(Math.random() * WORKFLOWS.length)];
+        const cost = Number((Math.random() * 2 + 0.3).toFixed(2));
+        const billed = Number((Math.random() * 15 + 5).toFixed(2));
+        const marginVal = ((billed - cost) / billed * 100).toFixed(1);
         const newRow: Transaction = {
-          id: 'X-XI-' + randId,
-          agentId: 'agent_' + randAgent,
-          cost: Number((Math.random() * 0.15).toFixed(3)),
-          revenue: Number((Math.random() * 2.5 + 0.3).toFixed(2)),
-          margin: Math.floor(Math.random() * 30 + 70) + '.0%',
+          id: 'TSK-' + randId,
+          customer: randCustomer,
+          workflow: randWorkflow,
+          cost,
+          billed,
+          margin: marginVal + '%',
           status: 'In-Flight'
         };
         const updated = [newRow, ...prev.slice(0, 4)].map((r, i) =>
@@ -39,7 +48,7 @@ const Ledger: React.FC = () => {
         );
         return updated as Transaction[];
       });
-    }, 3000);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
@@ -72,9 +81,10 @@ const Ledger: React.FC = () => {
           <table className="w-full text-left">
             <thead>
               <tr className="text-[10px] font-medium text-slate-500 uppercase tracking-widest border-b border-white/5">
-                <th className="py-3 px-6">TaskID / Identity</th>
-                <th className="py-3 px-4 text-right">Actual Cost</th>
-                <th className="py-3 px-4 text-right">Revenue</th>
+                <th className="py-3 px-6">Task ID</th>
+                <th className="py-3 px-4">Customer / Workflow</th>
+                <th className="py-3 px-4 text-right">Cost</th>
+                <th className="py-3 px-4 text-right">Billed</th>
                 <th className="py-3 px-4 text-right">Margin</th>
                 <th className="py-3 px-4 text-right">Status</th>
               </tr>
@@ -83,13 +93,16 @@ const Ledger: React.FC = () => {
               {rows.map((row, idx) => (
                 <tr key={row.id + idx} className={'border-b border-white/[0.02] hover:bg-white/[0.02] transition-colors ' + (idx === 0 ? 'bg-blue-500/[0.03]' : '')}>
                   <td className="py-3 px-6">
+                    <span className="text-slate-300">{row.id}</span>
+                  </td>
+                  <td className="py-3 px-4">
                     <div className="flex flex-col">
-                      <span className="text-slate-300">{row.id}</span>
-                      <span className="text-[10px] text-slate-600">aid:{row.agentId}</span>
+                      <span className="text-slate-300 font-sans text-xs">{row.customer}</span>
+                      <span className="text-[10px] text-slate-600">{row.workflow}</span>
                     </div>
                   </td>
-                  <td className="py-3 px-4 text-right text-slate-400">{'$'}{row.cost.toFixed(3)}</td>
-                  <td className="py-3 px-4 text-right text-emerald-400">{'+$'}{row.revenue.toFixed(2)}</td>
+                  <td className="py-3 px-4 text-right text-slate-400">{'$'}{row.cost.toFixed(2)}</td>
+                  <td className="py-3 px-4 text-right text-emerald-400">{row.billed > 0 ? '+$' + row.billed.toFixed(2) : '-'}</td>
                   <td className="py-3 px-4 text-right text-slate-300">{row.margin}</td>
                   <td className="py-3 px-4">
                     <div className="flex items-center justify-end gap-2">

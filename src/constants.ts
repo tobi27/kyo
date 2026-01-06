@@ -57,28 +57,28 @@ export const PRICING_TIERS: PricingTier[] = [
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    question: "What is a ForkLicense?",
-    answer: "A ForkLicense is a signed contract for agent reproduction. When a parent agent spawns a sub-agent, the ForkLicense enforces budget inheritance, recursion depth, and spawn taxes to prevent runaway scaling costs."
+    question: "How do you enforce budgets before execution?",
+    answer: "Every agent request passes through XiGate's control plane before reaching your LLM. We validate the request against your configured caps (per-task, per-customer, per-workflow) and reject executions that would exceed limits. This happens in milliseconds with no noticeable latency."
   },
   {
-    question: "How does 'Receipt Finality' work?",
-    answer: "Every completed task generates a cryptographically signed receipt. These receipts are batched into Merkle trees and rolled up at configurable windows, providing tamper-proof audit trails for compliance and chargebacks."
+    question: "How can I use this for chargeback?",
+    answer: "Every task generates a unique ID mapped to a customer, project, or workflow. At settlement, you get itemized records showing exact costs, margins, and attribution. Export directly to Stripe, NetSuite, or your billing system via API or CSV."
   },
   {
-    question: "Is my prompt data safe?",
-    answer: "Yes. XiGate operates on a zero-trust model. We only ingest usage metadata (token counts, model IDs, task duration) for accounting. Prompt payloads never leave your VPC."
+    question: "Does my data stay in my environment?",
+    answer: "Yes. XiGate runs in your VPC or on-prem. Prompts, responses, and sensitive payloads never leave your infrastructure. We only process usage metadata (token counts, model IDs, durations) for accounting and settlement."
   },
   {
-    question: "What are 'Lanes & Pricing'?",
-    answer: "Lanes are priority tiers for agent execution. Priority Lane offers faster settlement and higher rate limits for time-sensitive tasks. Economy Lane provides cost-optimized execution for batch workloads."
+    question: "How does swarm scaling remain bounded?",
+    answer: "When agents spawn sub-agents, our ForkLicense system enforces budget inheritance. Each child agent receives a fraction of the parent's budget with configurable depth limits. If a swarm tries to exceed its allocated budget, execution is blocked before costs spiral."
   },
   {
-    question: "Can we bill our customers per workflow?",
-    answer: "Yes. XiGate generates a unique transaction ID for every agent execution. You can map these 1:1 to your customer invoices with exact margin calculation."
+    question: "What compliance certifications do you support?",
+    answer: "XiGate is designed for regulated environments. Our architecture supports SOC2, HIPAA, and financial services compliance requirements. Enterprise customers receive dedicated compliance documentation and audit support."
   },
   {
-    question: "What integrations do you support?",
-    answer: "We offer drop-in SDKs for OpenAI, Anthropic, LangChain, LangGraph, CrewAI, and MCP. We also act as a proxy for standard HTTP requests if you're using custom orchestrators."
+    question: "How fast is the integration?",
+    answer: "Standard deployments take 10 minutes using our CLI. We offer drop-in SDKs for OpenAI, Anthropic, LangChain, CrewAI, and MCP. Design Partners get white-glove integration with a 7-day deployment guarantee."
   }
 ];
 
