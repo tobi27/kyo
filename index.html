@@ -3,9 +3,142 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XiGate | The Financial Control Plane for AI Agents</title>
+
+    <!-- Primary Meta Tags -->
+    <title>XiGate | Financial Control Plane for AI Agents - Cost Attribution, Budget Enforcement, Settlement</title>
+    <meta name="title" content="XiGate | Financial Control Plane for AI Agents" />
+    <meta name="description" content="Turn AI agent execution into predictable costs, billable economics, and auditable evidence. Budget enforcement, task attribution, swarm economics, and settlement for enterprise AI platforms." />
+    <meta name="keywords" content="AI agents, LLM cost control, AI budgeting, agent economics, AI spend management, LLM billing, AI chargeback, agent swarm, AI financial control, enterprise AI, AI cost attribution, AI settlement, AI audit, GPT cost management, Claude billing, LangChain pricing" />
+    <meta name="author" content="XiGate Inc." />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://xigate.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://xigate.com/" />
+    <meta property="og:title" content="XiGate | Financial Control Plane for AI Agents" />
+    <meta property="og:description" content="Turn AI agent execution into predictable costs, billable economics, and auditable evidence. Budget enforcement before execution, not after the invoice." />
+    <meta property="og:image" content="https://xigate.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="XiGate" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://xigate.com/" />
+    <meta name="twitter:title" content="XiGate | Financial Control Plane for AI Agents" />
+    <meta name="twitter:description" content="Turn AI agent execution into predictable costs, billable economics, and auditable evidence. Budget enforcement before execution." />
+    <meta name="twitter:image" content="https://xigate.com/og-image.png" />
+    <meta name="twitter:creator" content="@xigate" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#020305" />
+    <meta name="msapplication-TileColor" content="#020305" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "XiGate",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Cloud, On-Premise",
+      "description": "Financial control plane for AI agents. Turn agent execution into predictable costs, billable economics, and auditable evidence.",
+      "url": "https://xigate.com",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Standard",
+          "price": "500",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2027-12-31",
+          "description": "10,000 billable tasks included, $0.0001 per additional task"
+        },
+        {
+          "@type": "Offer",
+          "name": "Enterprise",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Custom pricing with VPC isolation, SLAs, and volume discounts"
+        }
+      ],
+      "featureList": [
+        "Budget enforcement before execution",
+        "Task-level cost attribution",
+        "Customer and workflow billing",
+        "Swarm economics with ForkLicense",
+        "Signed receipt finality",
+        "Merkle audit windows",
+        "VPC and on-prem deployment",
+        "OpenAI, Anthropic, LangChain integration"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "XiGate Inc.",
+        "url": "https://xigate.com",
+        "logo": "https://xigate.com/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "contact@actoris.fr"
+        }
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you enforce budgets before execution?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every agent request passes through XiGate's control plane before reaching your LLM. We validate the request against your configured caps (per-task, per-customer, per-workflow) and reject executions that would exceed limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I use this for chargeback?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every task generates a unique ID mapped to a customer, project, or workflow. At settlement, you get itemized records showing exact costs, margins, and attribution. Export directly to Stripe, NetSuite, or your billing system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my data stay in my environment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. XiGate runs in your VPC or on-prem. Prompts, responses, and sensitive payloads never leave your infrastructure. We only process usage metadata for accounting and settlement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does swarm scaling remain bounded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When agents spawn sub-agents, our ForkLicense system enforces budget inheritance. Each child agent receives a fraction of the parent's budget with configurable depth limits."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
