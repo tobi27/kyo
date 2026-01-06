@@ -29,18 +29,35 @@ const Hero: React.FC = () => {
         <div className="flex flex-col items-start gap-8">
           <div className="space-y-1">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight text-white leading-[1.05]">
-              <span className="block">Agent</span>
-              <span className="block">execution.</span>
-              <span className="block text-slate-500">Predictable</span>
-              <span className="block text-slate-500">costs.</span>
-              <span className="block gradient-text">Measured</span>
-              <span className="block gradient-text">margin.</span>
+              <span className="block">Where agents</span>
+              <span className="block">become</span>
+              <span className="block gradient-text">transactions.</span>
             </h1>
           </div>
 
           <p className="text-lg text-slate-400 max-w-lg font-light leading-relaxed">
-            XiGate turns agent execution into financial transactions: <span className="text-slate-300">identity → lineage → pricing → receipts → settlement.</span>
+            XiGate is the kernel where agentic execution becomes billable economics. <span className="text-white font-medium">Task → Swarm → Receipt → Settlement.</span>
           </p>
+
+          {/* Core primitives */}
+          <div className="grid grid-cols-2 gap-3 w-full max-w-md">
+            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
+              <p className="text-xs text-blue-400 font-semibold">Task</p>
+              <p className="text-[10px] text-slate-500">Economic unit</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
+              <p className="text-xs text-orange-400 font-semibold">Swarm</p>
+              <p className="text-[10px] text-slate-500">Recursion + lineage</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
+              <p className="text-xs text-emerald-400 font-semibold">Receipt</p>
+              <p className="text-[10px] text-slate-500">Computable truth</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
+              <p className="text-xs text-purple-400 font-semibold">Settlement</p>
+              <p className="text-[10px] text-slate-500">Value extraction</p>
+            </div>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
             <button onClick={handleStart} className="h-12 px-8 rounded-full bg-white text-black text-sm font-semibold hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">

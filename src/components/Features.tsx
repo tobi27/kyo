@@ -7,10 +7,11 @@ const PAIN_POINTS = [
   { icon: GitFork, text: 'Recursive agent workflows break budgets before anyone notices' },
 ];
 
-const SOLUTION_PILLARS = [
-  { icon: Shield, title: 'Financial Control', sub: 'before execution', desc: 'Enforce budgets, caps, and policies at the gate — not after the invoice arrives.' },
-  { icon: DollarSign, title: 'Task Economics', sub: 'cost, margin, attribution', desc: 'Every action maps to a customer, project, or workflow with exact margin calculation.' },
-  { icon: Receipt, title: 'Settlement & Chargeback', sub: 'audit-grade finality', desc: 'Signed receipts and Merkle proofs for compliance, billing disputes, and audits.' },
+const CORE_PRIMITIVES = [
+  { icon: DollarSign, title: 'Task Economics', sub: 'cost + billing + margin', desc: 'Every agent action is a Task with known cost, billable price, and measurable margin. The atomic unit of AI economics.', color: 'text-blue-500' },
+  { icon: GitFork, title: 'Swarm Lineage', sub: 'recursion + delegation', desc: 'When agents spawn agents, ForkLicense enforces budget inheritance and depth limits. Recursion-safe scaling.', color: 'text-orange-500' },
+  { icon: Receipt, title: 'Auditable Receipts', sub: 'signed proofs + Merkle windows', desc: 'Every execution generates a cryptographic receipt. Batch into Merkle trees for tamper-proof audit trails.', color: 'text-emerald-500' },
+  { icon: Zap, title: 'Settlement', sub: 'extraction to billing', desc: 'Roll up Tasks to invoices. Export to Stripe, NetSuite, or your ledger. Turn execution into revenue.', color: 'text-purple-500' },
 ];
 
 const INTEGRATIONS = [
@@ -126,23 +127,26 @@ const Features: React.FC = () => {
         </div>
       </section>
 
-      {/* Solution Overview */}
+      {/* Core Primitives - The Xi Kernel */}
       <section className="py-32 px-6 border-b border-white/5">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs text-blue-500 uppercase tracking-widest font-semibold mb-4">The Solution</p>
+            <p className="text-xs text-blue-500 uppercase tracking-widest font-semibold mb-4">The Xi Kernel</p>
             <h2 className="text-3xl md:text-4xl font-medium text-white mb-6">
-              XiGate turns agent execution into<br />
-              <span className="gradient-text">predictable cost, billable economics, and auditable evidence.</span>
+              The point where agentic execution<br />
+              <span className="gradient-text">becomes a financial transaction.</span>
             </h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              XiGate intercepts every agent call. Drop-in compatible with OpenAI, Anthropic, LangChain, CrewAI, and MCP endpoints.
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {SOLUTION_PILLARS.map((pillar, i) => (
-              <div key={i} className="p-8 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
-                <pillar.icon className="w-10 h-10 text-blue-500 mb-6" />
-                <h3 className="text-white font-semibold text-lg mb-1">{pillar.title}</h3>
-                <p className="text-blue-400 text-xs uppercase tracking-wider mb-4">{pillar.sub}</p>
-                <p className="text-slate-500 text-sm leading-relaxed">{pillar.desc}</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CORE_PRIMITIVES.map((prim, i) => (
+              <div key={i} className="p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
+                <prim.icon className={'w-8 h-8 mb-4 ' + prim.color} />
+                <h3 className="text-white font-semibold mb-1">{prim.title}</h3>
+                <p className={'text-xs uppercase tracking-wider mb-3 ' + prim.color}>{prim.sub}</p>
+                <p className="text-slate-500 text-sm leading-relaxed">{prim.desc}</p>
               </div>
             ))}
           </div>
