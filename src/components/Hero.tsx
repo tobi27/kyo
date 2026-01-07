@@ -28,15 +28,17 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 gap-16 items-center">
         <div className="flex flex-col items-start gap-8">
           <div className="space-y-1">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight text-white leading-[1.05]">
-              <span className="block">Where agents</span>
-              <span className="block">become</span>
-              <span className="block gradient-text">transactions.</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]">
+              <span className="block">Agents scale faster</span>
+              <span className="block text-slate-500">than financial visibility.</span>
             </h1>
+            <p className="text-2xl md:text-3xl font-medium gradient-text pt-4">
+              XiGate reconnects execution to accountability.
+            </p>
           </div>
 
           <p className="text-lg text-slate-400 max-w-lg font-light leading-relaxed">
-            XiGate is the kernel where agentic execution becomes billable economics. <span className="text-white font-medium">Task → Swarm → Receipt → Settlement.</span>
+            The kernel where agentic execution becomes billable economics. <span className="text-white font-medium">Task → Swarm → Receipt → Settlement.</span>
           </p>
 
           {/* Core primitives */}
