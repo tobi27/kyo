@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://kyo-two.vercel.app/sitemap.xml
+Sitemap: https://xigate.app/sitemap.xml
 
 # Disallow admin/API routes
 Disallow: /api/
